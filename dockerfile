@@ -1,2 +1,6 @@
 FROM nginx:alpine
-RUN echo "<h1>Hello Omar 🚀</h1>" > /usr/share/nginx/html/index.html
+
+ARG USERNAME
+ENV USERNAME=${USERNAME}
+
+CMD ["sh", "-c", "the user is $USERNAME"]
