@@ -19,6 +19,6 @@ steps:
     containerRegistry: 'dockerhub-connection'
     repository: '$(imageName)'
     command: 'buildAndPush'
-    Dockerfile: 'omardiablo/auredevops'
+    Dockerfile: 'Omaur/dockerhub'
     tags: |
       latest
