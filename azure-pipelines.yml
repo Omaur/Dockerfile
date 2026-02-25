@@ -4,6 +4,7 @@ trigger:
 pool: Default
 
 variables:
+- group: GitHubSecrets   # name of your variable group
   imageName: 'omardiablo/auredevops'
   tag: '$(Build.BuildId)'
   Build Sources Directory: $(Build.SourcesDirectory)
@@ -20,3 +21,11 @@ steps:
     tags: |
       latest
       $(tag)
+
+- script: |
+    git config user.name "Omaur"
+    git config user.email "omaraldeeb7@gmail.com"
+    git add .
+    git commit -m "Auto-commit from Azure DevOps"
+    git push https://$(GITHUB_PAT)@github.com/Omaur/Dockerfile.git HEAD:main
+  displayName: "Push changes to GitHub"
