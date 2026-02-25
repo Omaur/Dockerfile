@@ -1,0 +1,18 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool: Default
+
+- script: |
+    git checkout main
+    git config user.name "Omaur"
+    git config user.email "omaraldeeb7@gmail.com"
+    git add .
+    git commit -m "Auto-commit from Azure DevOps" || echo "No changes to commit"
+    git push https://$(GITHUB-TOKEN)@github.com/Omaur/Dockerfile.git main
+  displayName: "Push changes to GitHub"
