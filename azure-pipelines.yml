@@ -25,6 +25,7 @@ steps:
     buildContext: '$(Build.SourcesDirectory)'
     tags: |
       latest
+      $(tag)
 
 - task: SSH@0
   inputs:
@@ -34,6 +35,18 @@ steps:
       echo "Hello from Azure DevOps"
       docker ps
 
+- task: SSH@0
+  inputs:
+    sshEndpoint: 'my-vm-ssh-connection'
+    runOptions: 'commands'
+    commands: |
+      echo "Pulling latest image from Docker Hub..."
+      docker pull omardiablo/auredevops:$(tag)
+      echo "Stopping any existing container..."
+      docker stop azure_devops_app || true
+      docker rm azure_devops_app || true
+      echo "Running container..."
+      docker run -d --name azure_devops_app -p 80:80 omardiablo/auredevops:$(tag)
 - script: |
     git checkout main
     git config user.name "Omaur"
