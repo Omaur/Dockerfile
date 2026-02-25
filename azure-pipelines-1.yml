@@ -11,7 +11,7 @@ pool: Default
 steps:
 - task: SSH@0
   inputs:
-    sshEndpoint: 'omar'
+    sshEndpoint: 'my-vm-ssh-connection'  
     runOptions: 'commands'
     commands: |
       echo "Hello from Azure DevOps"
