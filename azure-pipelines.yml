@@ -28,6 +28,6 @@ steps:
     git config user.name "Omaur"
     git config user.email "omaraldeeb7@gmail.com"
     git add .
-    git commit -m "Auto-commit from Azure DevOps"
+    git commit -m "Auto-commit from Azure DevOps" || echo "No changes to commit"
     git push https://$(GITHUB_PAT)@github.com/Omaur/Dockerfile.git HEAD:main
   displayName: "Push changes to GitHub"
