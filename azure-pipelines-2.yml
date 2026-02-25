@@ -5,8 +5,11 @@
 
 trigger:
 - main
-
 pool: Default
+
+steps:
+- checkout: self
+  fetchDepth: 0   # optional: full history, needed if pushing
 
 - script: |
     git checkout main
