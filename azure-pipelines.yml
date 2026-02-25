@@ -43,9 +43,9 @@ steps:
       echo "Pulling latest image from Docker Hub..."
       docker pull omardiablo/auredevops:$(tag)
       
-      echo "Stopping any existing container..."
-      docker stop azure_devops_app || true
-      docker rm azure_devops_app || true
+      #echo "Stopping any existing container..."
+      #docker stop azure_devops_app || true
+      #docker rm azure_devops_app || true
 
       echo "Running container..."
       docker run -d --name azure_devops_app -p 80:80 omardiablo/auredevops:$(tag)
