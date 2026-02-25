@@ -41,12 +41,14 @@ steps:
     runOptions: 'commands'
     commands: |
       echo "Pulling latest image from Docker Hub..."
-      docker pull omardiablo/auredevops:$(tag)
+      docker pull ***/auredevops:$(tag)
+      
       echo "Stopping any existing container..."
       docker stop azure_devops_app || true
       docker rm azure_devops_app || true
+
       echo "Running container..."
-      docker run -d --name azure_devops_app -p 80:80 omardiablo/auredevops:$(tag)
+      docker run -d --name azure_devops_app -p 80:80 ***/auredevops:$(tag)
 - script: |
     git checkout main
     git config user.name "Omaur"
