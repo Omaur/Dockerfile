@@ -4,7 +4,7 @@ trigger:
 pool: Default
 
 variables:
-  imageName: 'Omaur/dockerhub'
+  imageName: 'omardiablo/auredevops'
   tag: '$(Build.BuildId)'
 
 steps:
@@ -14,8 +14,8 @@ steps:
     containerRegistry: 'dockerhub-connection'
     repository: '$(imageName)'
     command: 'buildAndPush'
-    Dockerfile: 'Omaur/Dockerfile'   # correct Dockerfile path
-    buildContext: 'Omaur'            # folder with app code
+    Dockerfile: 'Dockerfile'   # correct Dockerfile path
+    buildContext: ''            # folder with app code
     tags: |
       latest
       $(tag)
